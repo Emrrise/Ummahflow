@@ -1,0 +1,90 @@
+/* Global styles for UmmahFlow application */
+
+:root{
+  --bg: #f6fbf6;
+  --card: #ffffff;
+  --muted: #6b7a6b;
+  --text: #103322;
+  --accent-start: #6fcf97;
+  --accent-end: #8fd3a4;
+  --accent: linear-gradient(135deg,var(--accent-start) 0%, var(--accent-end) 100%);
+  --gold-start: #f5e6c8;
+  --gold-end: #f1dd9a;
+  --accent-2: linear-gradient(135deg,var(--gold-start) 0%, var(--gold-end) 100%);
+  --glass: rgba(255,255,255,0.6);
+  --shadow: 0 8px 24px rgba(16,51,34,0.08);
+}
+
+body[data-theme='dark']{
+  --bg: #07120a;
+  --card: #0f1b14;
+  --muted: #95b59a;
+  --text: #e6f5ea;
+  --accent-start: #2b8a6b;
+  --accent-end: #3da57f;
+  --accent: linear-gradient(135deg,var(--accent-start) 0%, var(--accent-end) 100%);
+  --accent-2: linear-gradient(135deg,#4b6b6b 0%, #6b4b7b 100%);
+  --glass: rgba(255,255,255,0.04);
+  --shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 600;
+}
+
+a { text-decoration:none; color:var(--accent-start) }
+a:hover { text-decoration:underline }
+
+.container { max-width:1200px; margin:0 auto; padding:28px }
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), var(--card));
+  border-radius:14px; padding:20px; margin-bottom:20px; box-shadow:var(--shadow); backdrop-filter: blur(6px);
+}
+
+.button{ background:var(--accent); color:white; border:none; border-radius:10px; padding:10px 16px; cursor:pointer; transition:transform .18s ease, box-shadow .18s; box-shadow:0 6px 18px rgba(47,128,68,0.12) }
+.button:active{ transform:translateY(1px) }
+.button.alt{ background:var(--accent-2); color:#2b3a2b }
+
+input, select, textarea{ border:1px solid rgba(0,0,0,0.06); border-radius:10px; padding:12px 14px; width:100%; box-sizing:border-box; background: rgba(255,255,255,0.6) }
+input:focus, select:focus, textarea:focus{ outline:none; box-shadow:0 4px 16px rgba(16,51,34,0.06) }
+
+.footer{ text-align:center; padding:20px; opacity:0.9 }
+
+/* Layout helpers */
+.layout{ display:flex; flex-direction:column; min-height:100vh }
+.main-content{ display:flex; gap:24px; padding:28px }
+.sidebar{ width:220px }
+.content{ flex:1 }
+
+/* Quran verse */
+.quran-verse .arabic-text{ font-family: 'Scheherazade', 'Noto Naskh Arabic', serif; font-size:28px; text-align:right; direction:rtl; color: rgba(16,51,34,0.95) }
+.quran-verse .translation{ margin-top:8px; color:var(--muted) }
+
+/* Task manager */
+.task-manager .task-list{ list-style:none; margin:0; padding:0 }
+.task-manager .task-item{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px; border-radius:10px; margin-bottom:8px; background:linear-gradient(90deg, rgba(245,255,248,0.6), rgba(255,255,255,0.2)); }
+.task-manager .task-item.done{ opacity:0.6; text-decoration:line-through }
+.progress{ height:10px; background:rgba(0,0,0,0.06); border-radius:999px; overflow:hidden }
+.progress > i{ display:block; height:100%; background:linear-gradient(90deg,var(--accent-start),var(--accent-end)); transition:width 400ms cubic-bezier(.2,.8,.2,1) }
+
+/* AI Chat */
+.ai-chat-container{ background: linear-gradient(180deg, rgba(241,250,244,0.6), rgba(255,255,255,0.6)); border-radius:12px; padding:14px }
+.ai-chat-container.pale-gold{ background: linear-gradient(180deg, rgba(250,247,236,0.9), rgba(255,250,230,0.9)); }
+.ai-chat-saturated{ filter:saturate(1.08) }
+.chat-history{ max-height:320px; overflow:auto; padding:8px }
+.chat-message{ margin-bottom:8px }
+.user-message{ text-align:right; color:var(--text) }
+.bot-message{ text-align:left; color:var(--muted) }
+
+@media (max-width:900px){ .main-content{ flex-direction:column } .sidebar{ width:100%; order:2 } }

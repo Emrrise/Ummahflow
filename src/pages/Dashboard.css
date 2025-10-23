@@ -1,0 +1,5 @@
+/* Minimal Dashboard styles used by Dashboard.tsx */
+
+.dashboard { display:flex; flex-direction:column }
+.main-content { display:flex; gap:20px }
+.card { padding:18px }
